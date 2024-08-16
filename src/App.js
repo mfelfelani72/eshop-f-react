@@ -11,12 +11,13 @@ import "./App.css";
 import Page404 from "./components/general/Page404.jsx";
 
 
-const App = () => {
+// const App = () => {
+export default function App() {
 
   const { user } = useGeneralContext();
 
   const navigate = useNavigate();
- 
+
 
   const location = useLocation();
   const { hash, pathname, search } = location;
@@ -77,7 +78,7 @@ const App = () => {
   // Errors
 }
 
-export default App
+// export default App
 
 
 
