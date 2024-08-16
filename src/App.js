@@ -16,7 +16,7 @@ const App = () => {
   const { user } = useGeneralContext();
 
   const navigate = useNavigate();
-
+ 
 
   const location = useLocation();
   const { hash, pathname, search } = location;
