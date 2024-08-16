@@ -5,7 +5,7 @@ import { GeneralProvider } from './context/GeneralContext.jsx';
 import App from './App';
 import './index.css';
 
-// import './i18n/index.js';
+import './i18n/index.js';
 
 import ReactDOM from 'react-dom/client';
 
