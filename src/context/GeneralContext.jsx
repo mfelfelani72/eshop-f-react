@@ -22,12 +22,12 @@ export const GeneralProvider = ({ children }) => {
 
     }
 
-    // const logout = () => {
-    //     axios.post("/logout").then(() => {
-    //         setUser(null);
-    //     });
-    //     navigate("/");
-    // }
+    const logout = () => {
+        axios.post("/logout").then(() => {
+            setUser(null);
+        });
+        navigate("/");
+    }
     // General
 
     useEffect(() => {
