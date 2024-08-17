@@ -69,9 +69,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        if (!user) {
-            getUser();
-        }
+      
     }, []);
 
     return <AuthContext.Provider value={{

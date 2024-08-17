@@ -12,7 +12,7 @@ import Page404 from "./components/general/Page404.jsx";
 
 
 const App = () => {
-// export default function App() {
+  // export default function App() {
 
   const { user } = useGeneralContext();
 
@@ -29,6 +29,14 @@ const App = () => {
 
 
   const themeRoutes = ["/"];
+
+
+  useEffect(() => {
+    if (authRoutes.includes(pathname) && localStorage.getItem("username"))
+      navigate("/");
+  }, []);
+
+
 
   // Admin Panel
   if (adminRoutes.includes(pathname)) {
@@ -49,15 +57,11 @@ const App = () => {
 
   // Auth Panel
   else if (authRoutes.includes(pathname)) {
-    if (user) {
-      navigate(-1);
-      //  hide login,register... page !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    }
-    else {
-      return (
-        <AuthPanel />
-      )
-    }
+
+    return (
+      <AuthPanel />
+    )
+
   }
   // Auth Panel
 
@@ -76,6 +80,8 @@ const App = () => {
     )
   }
   // Errors
+
+
 }
 
 export default App
