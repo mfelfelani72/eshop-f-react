@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
 
-import Login from "../../pages/auth/Login.jsx";
-import Register from "../../pages/auth/Register.jsx";
-import ForgotPassword from "../../pages/auth/ForgotPassword.jsx";
-import ResetPassword from "../../pages/auth/ResetPassword.jsx";
+import Login from "../../pages/auth/Login.js";
+import Register from "../../pages/auth/Register.js";
+import ForgotPassword from "../../pages/auth/ForgotPassword.js";
+import ResetPassword from "../../pages/auth/ResetPassword.js";
 
-import { AuthProvider } from '../../context/AuthContext.jsx';
+import { AuthProvider } from '../../context/AuthContext.js';
 
 const AuthPanel = () => {
     return (

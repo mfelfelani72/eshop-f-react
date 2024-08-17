@@ -29,7 +29,7 @@ const Login = () => {
           <form onSubmit={handleRegister} className='flex flex-col gap-4'>
             <input className='p-2 mt-8 rounded-xl border'
               type='name'
-              value={name}
+              // value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
 

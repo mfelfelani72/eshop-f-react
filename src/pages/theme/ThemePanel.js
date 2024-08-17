@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
 
-import White from "../theme/White.jsx";
+import White from "../theme/White.js";
 
 const ThemePanel = () => {
     return (

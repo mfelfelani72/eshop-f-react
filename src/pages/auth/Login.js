@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuthContext from '../../context/AuthContext';
 
+// export default function Login() {
 const Login = () => {
 
     const [email, setEmail] = useState("");
@@ -45,6 +46,7 @@ const Login = () => {
                                 className='p-2 rounded-xl border w-full'
                                 type="password"
                                 value={password}
+                                autoComplete="on"
                                 onChange={(e) => { setPassword(e.target.value) }}
                                 placeholder="Password"
 

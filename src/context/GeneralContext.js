@@ -12,16 +12,17 @@ export const GeneralProvider = ({ children }) => {
 
     const navigate = useNavigate();
     const csrf = () => axios.get('/sanctum/csrf-cookie');
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
+   
 
-    const [currentLng, setCurrentLng] = useState({ id: 'ltr', name: 'en' });
+
+    // const [currentLng, setCurrentLng] = useState({ id: 'ltr', name: 'en' });
 
     const getUser = async () => {
 
         await csrf();
         const { data } = await axios.get('/api/users');
         setUser(data);
-
     }
 
     const logout = () => {
@@ -31,32 +32,32 @@ export const GeneralProvider = ({ children }) => {
         navigate("/");
     }
 
-    const setLng = (e) => {
-        // console.log(e);
-        i18n.changeLanguage(e.name);
-        setCurrentLng(e);
-        // console.log(currentLng);
-        localStorage.setItem("currentLngId", [e.id]);
-        localStorage.setItem("currentLngName", [e.name]);
-        const rootHtml = document.getElementById("root-html");
-        if (rootHtml && e.id == 'rtl') {
-            // console.log("rtl");
-            rootHtml.setAttribute("dir", 'rtl');
-        }
-        else {
-            // console.log("ltr");
-            rootHtml.setAttribute("dir", 'ltr');
-        }
+    // const setLng = (e) => {
+    //     // console.log(e);
+    //     i18n.changeLanguage(e.name);
+    //     setCurrentLng(e);
+    //     // console.log(currentLng);
+    //     localStorage.setItem("currentLngId", [e.id]);
+    //     localStorage.setItem("currentLngName", [e.name]);
+    //     const rootHtml = document.getElementById("root-html");
+    //     if (rootHtml && e.id == 'rtl') {
+    //         // console.log("rtl");
+    //         rootHtml.setAttribute("dir", 'rtl');
+    //     }
+    //     else {
+    //         // console.log("ltr");
+    //         rootHtml.setAttribute("dir", 'ltr');
+    //     }
 
-    };
+    // };
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (!user) {
-            getUser();
-        }
-    }, []);
+    //     if (!user) {
+    //         getUser();
+    //     }
+    // }, []);
 
     return <GeneralContext.Provider value={{
 
@@ -66,9 +67,9 @@ export const GeneralProvider = ({ children }) => {
         getUser,
         // user
         // lang
-        setLng,
-        currentLng,
-        setCurrentLng,
+        // setLng,
+        // currentLng,
+        // setCurrentLng,
         // lang
 
 

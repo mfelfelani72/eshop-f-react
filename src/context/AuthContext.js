@@ -6,6 +6,8 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
 
+    const [userName, setUserName] = useState("");
+    const [result, setResult] = useState();
     const [user, setUser] = useState(null);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
@@ -21,11 +23,17 @@ export const AuthProvider = ({ children }) => {
         await csrf();
         setErrors([]);
 
+
+
         try {
-            await axios.post('/login', data);
-            await getUser();
-            navigate("/");
-           
+
+        setResult(await axios.post('/api/login', data));
+        console.log(result);
+        localStorage.setItem("username", result.data.information.name);
+        // await getUser();
+        // console.log(temp);
+        navigate("/");
+
 
         }
 
@@ -47,17 +55,18 @@ export const AuthProvider = ({ children }) => {
         }
 
         catch (e) {
-            if (e.response.status === 422) {
-                setErrors(e.response.data.errors);
-            }
+            console.log(e);
+            // if (e.response.status === 422) {
+            //     setErrors(e.response.data.errors);
+            // }
         }
     }
 
-    // const logout = () => {
-    //     axios.post("/logout").then(() => {
-    //         setUser(null);
-    //     });
-    // }
+    const logout = () => {
+        axios.post("/logout").then(() => {
+            setUser(null);
+        });
+    }
 
     useEffect(() => {
         if (!user) {
@@ -71,8 +80,9 @@ export const AuthProvider = ({ children }) => {
         getUser,
         login,
         register,
-        // logout,
+        logout,
         csrf,
+        userName,
 
     }}>
         {children}

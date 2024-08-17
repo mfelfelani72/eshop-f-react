@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
-import { GeneralProvider } from './context/GeneralContext.jsx';
+import { GeneralProvider } from './context/GeneralContext.js';
 
 import App from './App';
 import './index.css';
