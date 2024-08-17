@@ -7,7 +7,7 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
 
     const [userName, setUserName] = useState("");
-    const [resultLogin, setResultLogin] = useState();
+    const [result, setResult] = useState();
     const [user, setUser] = useState(null);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
@@ -23,8 +23,26 @@ export const AuthProvider = ({ children }) => {
         await csrf();
         setErrors([]);
 
-        setResultLogin(await axios.post('/api/login', data));
+        try {
 
+            setResult(await axios.post('/api/login', data), () => localStorage.setItem("username", result.data.information.name));
+
+            // setResult(await axios.post('/api/login', data));
+            // console.log(await axios.post('/api/login', data));
+            // localStorage.setItem("username", result.data.information.name);
+            // await getUser();
+            // console.log(temp);
+            // navigate("/");
+
+
+        }
+
+        catch (e) {
+            console.log(e);
+            // if (e.response.status === 422) {
+            //     setErrors(e.response.data.errors);
+            // }
+        }
     }
     const register = async ({ ...data }) => {
 
@@ -52,19 +70,9 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-
-        if (resultLogin && resultLogin.data.success) {
-            // console.log(resultLogin.data.success);
-            localStorage.setItem("username", resultLogin.data.information.name);
-            navigate("/");
-        }
-        else if (resultLogin && !resultLogin.data.success) {
-            // console.log(resultLogin.data.message);
-            setErrors({ 'code': resultLogin.data.message });
-
-        }
-
-    }, [resultLogin, errors]);
+        if (result)
+            localStorage.setItem("username", result.data.information.name);
+    }, [result]);
 
     return <AuthContext.Provider value={{
         user,
