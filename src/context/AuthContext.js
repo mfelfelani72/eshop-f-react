@@ -53,16 +53,16 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
 
+        // Login
         if (resultLogin && resultLogin.data.success) {
-            // console.log(resultLogin.data.success);
             localStorage.setItem("username", resultLogin.data.information.name);
             navigate("/");
         }
         else if (resultLogin && !resultLogin.data.success) {
-            // console.log(resultLogin.data.message);
-            setErrors({ 'code': resultLogin.data.message });
-
+            console.log(resultLogin.data.errorCode);
+            setErrors(resultLogin.data);
         }
+        // Login
 
     }, [resultLogin, errors]);
 
