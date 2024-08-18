@@ -6,18 +6,33 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
 
-    const [userName, setUserName] = useState("");
+
     const [resultLogin, setResultLogin] = useState();
-    const [user, setUser] = useState(null);
     const [errors, setErrors] = useState([]);
+
     const navigate = useNavigate();
     const csrf = () => axios.get('/sanctum/csrf-cookie');
 
-    const getUser = async () => {
+    const getUser = async (token ) => {
+        await csrf();
+        try {
+            await  axios.get('/api/users', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            }).then(function (response) {
+                console.log(response.data);});
+        }
+        catch (error){
+            // console.log(error.response.status);
+            console.log(error);
+        }
+    
 
-        const { data } = await axios.get('/api/users');
-        setUser(data);
+       
     }
+
     const login = async ({ ...data }) => {
 
         await csrf();
@@ -33,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
         try {
             await axios.post('/register', data);
-            await getUser();
+            // await getUser();
             navigate("/");
         }
 
@@ -47,17 +62,20 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         axios.post("/logout").then(() => {
-            setUser(null);
+            // setUser(null);
         });
     }
 
     useEffect(() => {
 
+        
         // Login
         if (resultLogin && resultLogin.data.success) {
-            // localStorage.setItem("username", resultLogin.data.information.name);
-            window.sessionStorage.setItem('username', resultLogin.data.information.name)
-            navigate("/");
+            // console.log(resultLogin);
+            // window.sessionStorage.setItem('username', resultLogin.data.result.user_name);2
+            window.sessionStorage.setItem('token', resultLogin.data.result.token);
+            getUser(window.sessionStorage.getItem("token"));
+            // navigate("/");
         }
         else if (resultLogin && !resultLogin.data.success) {
             console.log(resultLogin.data.errorCode);
@@ -68,14 +86,12 @@ export const AuthProvider = ({ children }) => {
     }, [resultLogin, errors]);
 
     return <AuthContext.Provider value={{
-        user,
+
         errors,
-        getUser,
         login,
         register,
         logout,
         csrf,
-        userName,
 
     }}>
         {children}
