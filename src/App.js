@@ -32,7 +32,7 @@ const App = () => {
 
 
   useEffect(() => {
-    if (authRoutes.includes(pathname) && localStorage.getItem("username"))
+    if (authRoutes.includes(pathname) && window.sessionStorage.getItem('username'))
       navigate("/");
   }, []);
 

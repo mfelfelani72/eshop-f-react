@@ -55,7 +55,8 @@ export const AuthProvider = ({ children }) => {
 
         // Login
         if (resultLogin && resultLogin.data.success) {
-            localStorage.setItem("username", resultLogin.data.information.name);
+            // localStorage.setItem("username", resultLogin.data.information.name);
+            window.sessionStorage.setItem('username', resultLogin.data.information.name)
             navigate("/");
         }
         else if (resultLogin && !resultLogin.data.success) {

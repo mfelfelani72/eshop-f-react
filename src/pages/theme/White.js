@@ -3,7 +3,7 @@ import useGeneralContext from '../../context/GeneralContext'
 const White = () => {
  
   return (
-    <div>White {localStorage.getItem("username")}</div>
+    <div>White {window.sessionStorage.getItem('username')}</div>
   )
 }
 
