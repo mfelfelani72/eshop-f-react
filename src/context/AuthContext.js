@@ -72,10 +72,10 @@ export const AuthProvider = ({ children }) => {
         // Login
         if (resultLogin && resultLogin.data.success) {
             // console.log(resultLogin);
-            // window.sessionStorage.setItem('username', resultLogin.data.result.user_name);2
+            window.sessionStorage.setItem('username', resultLogin.data.result.user_name);
             window.sessionStorage.setItem('token', resultLogin.data.result.token);
-            getUser(window.sessionStorage.getItem("token"));
-            // navigate("/");
+            // getUser(window.sessionStorage.getItem("token"));
+            navigate("/");
         }
         else if (resultLogin && !resultLogin.data.success) {
             console.log(resultLogin.data.errorCode);
