@@ -5,9 +5,9 @@ import { Route, Routes } from "react-router-dom";
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from "../../components/admin/index.jsx";
 
-import useGeneralContext from '../../context/GeneralContext.js'
+import useGeneralContext from '../../context/GeneralContext.jsx'
 
-import { AdminProvider } from '../../context/AdminContext.js';
+import { AdminProvider } from '../../context/AdminContext.jsx';
 
 import {
     Ecommerce,

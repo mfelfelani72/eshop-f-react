@@ -9,29 +9,10 @@ const GeneralContext = createContext({});
 
 export const GeneralProvider = ({ children }) => {
 
-
-    const navigate = useNavigate();
-    const csrf = () => axios.get('/sanctum/csrf-cookie');
-    const [user, setUser] = useState();
+    // const navigate = useNavigate();
+    // const csrf = () => axios.get('/sanctum/csrf-cookie');
    
-
-
     const [currentLng, setCurrentLng] = useState({ id: 'ltr', name: 'en' });
-
-    const getUser = async () => {
-
-        await csrf();
-        const { data } = await axios.get('/api/users');
-        setUser(data);
-    }
-
-    const logout = () => {
-        axios.post("/logout").then(() => {
-            setUser(null);
-        });
-        navigate("/");
-    }
-
     const setLng = (e) => {
         // console.log(e);
         i18n.changeLanguage(e.name);
@@ -62,9 +43,9 @@ export const GeneralProvider = ({ children }) => {
     return <GeneralContext.Provider value={{
 
         // user
-        user,
-        logout,
-        getUser,
+        // user,
+        // logout,
+        // getUser,
         // user
         // lang
         setLng,

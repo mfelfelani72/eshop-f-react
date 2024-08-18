@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import AdminPanel from "./pages/admin/AdminPanel.js";
-import AuthPanel from "./pages/auth/AuthPanel.js";
-import ThemePanel from "./pages/theme/default/ThemePanel.js";
+import AdminPanel from "./pages/admin/AdminPanel.jsx";
+import AuthPanel from "./pages/auth/AuthPanel.jsx";
+import ThemePanel from "./pages/theme/default/ThemePanel.jsx";
 
-import useGeneralContext from './context/GeneralContext.js'
+import useGeneralContext from './context/GeneralContext.jsx'
 
 import "./App.css";
 import Page404 from "./components/general/Page404.jsx";
 
 
 const App = () => {
-  // export default function App() {
+
 
   const { user } = useGeneralContext();
 

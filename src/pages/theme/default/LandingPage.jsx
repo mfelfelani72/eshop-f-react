@@ -9,7 +9,7 @@ import TestmonialLandingPage from '../../../components/theme/default/TestmonialL
 import EndBanerLandingPage from '../../../components/theme/default/EndBanerLandingPage';
 import Footer from '../../../components/theme/default/Footer';
 
-const LandingPage = () => {
+function LandingPage() {
     return (
         <>
             <div className="flex flex-col overflow-x-hidden">
@@ -27,9 +27,9 @@ const LandingPage = () => {
 
                 <TestmonialLandingPage />
 
-                {/* <EndBanerLandingPage /> */}
+                <EndBanerLandingPage />
 
-                {/* <Footer /> */}
+                <Footer />
 
 
             </div>
