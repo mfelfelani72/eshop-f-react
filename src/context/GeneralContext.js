@@ -16,7 +16,7 @@ export const GeneralProvider = ({ children }) => {
    
 
 
-    // const [currentLng, setCurrentLng] = useState({ id: 'ltr', name: 'en' });
+    const [currentLng, setCurrentLng] = useState({ id: 'ltr', name: 'en' });
 
     const getUser = async () => {
 
@@ -32,24 +32,24 @@ export const GeneralProvider = ({ children }) => {
         navigate("/");
     }
 
-    // const setLng = (e) => {
-    //     // console.log(e);
-    //     i18n.changeLanguage(e.name);
-    //     setCurrentLng(e);
-    //     // console.log(currentLng);
-    //     localStorage.setItem("currentLngId", [e.id]);
-    //     localStorage.setItem("currentLngName", [e.name]);
-    //     const rootHtml = document.getElementById("root-html");
-    //     if (rootHtml && e.id == 'rtl') {
-    //         // console.log("rtl");
-    //         rootHtml.setAttribute("dir", 'rtl');
-    //     }
-    //     else {
-    //         // console.log("ltr");
-    //         rootHtml.setAttribute("dir", 'ltr');
-    //     }
+    const setLng = (e) => {
+        // console.log(e);
+        i18n.changeLanguage(e.name);
+        setCurrentLng(e);
+        // console.log(currentLng);
+        localStorage.setItem("currentLngId", [e.id]);
+        localStorage.setItem("currentLngName", [e.name]);
+        const rootHtml = document.getElementById("root-html");
+        if (rootHtml && e.id == 'rtl') {
+            // console.log("rtl");
+            rootHtml.setAttribute("dir", 'rtl');
+        }
+        else {
+            // console.log("ltr");
+            rootHtml.setAttribute("dir", 'ltr');
+        }
 
-    // };
+    };
 
 
     // useEffect(() => {
@@ -67,9 +67,9 @@ export const GeneralProvider = ({ children }) => {
         getUser,
         // user
         // lang
-        // setLng,
-        // currentLng,
-        // setCurrentLng,
+        setLng,
+        currentLng,
+        setCurrentLng,
         // lang
 
 

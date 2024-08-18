@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import AdminPanel from "./pages/admin/AdminPanel.js";
 import AuthPanel from "./pages/auth/AuthPanel.js";
-import ThemePanel from "./pages/theme/ThemePanel.js";
+import ThemePanel from "./pages/theme/default/ThemePanel.js";
 
 import useGeneralContext from './context/GeneralContext.js'
 
