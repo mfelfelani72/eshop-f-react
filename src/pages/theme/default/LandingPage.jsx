@@ -19,9 +19,9 @@ function LandingPage() {
 
                 <Menu />
 
-                {/* <CarouselTransition /> */}
+                <CarouselTransition />
 
-                {/* <CardLandingPage /> */}
+                <CardLandingPage />
 
                 <BanerLandingPage />
 

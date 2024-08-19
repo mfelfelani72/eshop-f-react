@@ -1,7 +1,6 @@
 import { Carousel, Typography, Button } from "@material-tailwind/react";
 
-const CarouselWithContent = () => {
-  
+function CarouselWithContent() {
   return (
     <Carousel className=""
       autoplay={true}

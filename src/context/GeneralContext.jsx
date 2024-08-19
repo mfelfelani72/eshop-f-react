@@ -1,20 +1,14 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import React, { createContext, useContext, useState } from "react";
 import i18n from "../i18n";
 
-import axios from "../api/axios";
 
 const GeneralContext = createContext({});
 
 export const GeneralProvider = ({ children }) => {
-
-    // const navigate = useNavigate();
-    // const csrf = () => axios.get('/sanctum/csrf-cookie');
-   
     const [currentLng, setCurrentLng] = useState({ id: 'ltr', name: 'en' });
+
     const setLng = (e) => {
-        // console.log(e);
+      
         i18n.changeLanguage(e.name);
         setCurrentLng(e);
         // console.log(currentLng);
@@ -32,34 +26,18 @@ export const GeneralProvider = ({ children }) => {
 
     };
 
-
-    // useEffect(() => {
-
-    //     if (!user) {
-    //         getUser();
-    //     }
-    // }, []);
+    
 
     return <GeneralContext.Provider value={{
 
-        // user
-        // user,
-        // logout,
-        // getUser,
-        // user
-        // lang
         setLng,
         currentLng,
         setCurrentLng,
-        // lang
-
-
-
-
 
     }}>
         {children}
     </GeneralContext.Provider>
+
 
 }
 
