@@ -41,16 +41,16 @@ const App = () => {
   // Admin Panel
   if (adminRoutes.includes(pathname)) {
 
-    if (user && user.role == "admin")
+    // if (user && user.role == "admin")
       return (
         <AdminPanel />
       );
 
-    else if (user && user.role !== "admin" || !user) {
-      return (<Page404 />)
+    // else if (user && user.role !== "admin" || !user) {
+      // return (<Page404 />)
       // <Page404 /> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       //  hide login,register... page !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    }
+    // }
   }
   // Admin Panel
 
